@@ -1,0 +1,2 @@
+#!/bin/bash
+objdump -D -b binary -m i386 -M x86-64 $1
