@@ -6,6 +6,8 @@
 #include <time.h>
 #include <sys/time.h>
 
+#include "helpers.h"
+
 
 int my_pow(int source){
   return source*source;
@@ -48,15 +50,18 @@ int main(){
   printf("FUNC: %i\n", (unsigned) func(9));
   printf("Mypow: %i\n", my_pow(9));
   char* c = (char*)(my_pow);
-
+  hexdump(my_pow, 8*3);
+ uuu:
   for (int i=0; i>-1; i++){
     void* currp = (*my_pow)+i*8;
-    printf("Char: %x\n", (short int)currp);
+    for (int u=0; u<10; u++){
+      printf("Char is: %02x\n", 0xff & ((char*) currp)[u]);
+    }
     i=-2;
   }
 
-  timeit(func);
-  timeit(my_pow);
+  //timeit(func);
+  //timeit(my_pow);
   
   return 0;
 }
